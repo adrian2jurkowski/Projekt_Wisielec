@@ -7,10 +7,10 @@ passwords = ['zeszyt', 'halogen', 'laptop', 'gwiazdka', 'interpretacja', 'github
              'kwas']
 
 password = str(passwords[random.randint(0, len(passwords) - 1)])
-tablica = list(password)
+board = list(password)
 
 for i in range(len(password)):
-    tablica[i] = '_'
+    board[i] = '_'
 
 attemp = 8
 
@@ -18,7 +18,7 @@ while attemp > 0:
     print()
     print(nick, "pozostało Ci ", attemp, "prób.")
     print()
-    print(" ".join(tablica))
+    print(" ".join(board))
     print()
 
     print("Podaj swoją literę: ")
@@ -27,14 +27,18 @@ while attemp > 0:
     if letter in password:
         for i in range(len(password)):
             if password[i] == letter:
-                tablica[i] = letter
-        if "".join(map(str, tablica)) == password:
+                board[i] = letter
+        if "".join(map(str, board)) == password:
             print()
             print(nick, "pozostało Ci ", attemp, "prób.")
             print()
-            print(" ".join(tablica))
+            print(" ".join(board))
             print()
             print(nick, "gratulacje! Wygrałeś.")
             break
     else:
         attemp -= 1
+        if attemp == 0:
+            print("Koniec gry. Niestety nie udało sie odgadnąć hasła.")
+            print("Poszukiwanym hasłem było: ", password)
+
